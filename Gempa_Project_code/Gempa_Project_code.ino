@@ -1,3 +1,4 @@
+
 //Libraries 
 #include<Wire.h>
 #include <DFRobot_sim808.h>
@@ -42,8 +43,8 @@ int buttonStateB = 0;
 int buttonStateC = 0;
 
 //Emergency mobile phone numbers
-#define PHONE_NUMBER "0863788777"
-#define PHONE_NUMBER2 "0868249677"
+#define PHONE_NUMBER "086#######"
+#define PHONE_NUMBER2 "086#######"
 
 //messages for database and texting
 #define MESSAGE "Panic Button Activated, Please Help Me!!! \n \nCannot find GPS coordinates"
@@ -159,7 +160,7 @@ void Message()
      sim808.readSMS(messageIndex, message, MESSAGE_LENGTH, phone, datetime);
      delay(3000);
      //Search for the first specified phone number and message content that has Location in it 
-     if((!strcmp(phone,"+353863788777"))&&(!strcmp(message,"Location")))
+     if((!strcmp(phone,"+086#######"))&&(!strcmp(message,"Location")))
      {
         //If coordinates can be found send message to specified phone number
         //with last know GPS coordinates
@@ -180,7 +181,7 @@ void Message()
      
      //Search for the second specified phone number and message content that has Location in it 
      //Process is repeated same as above
-     else if((!strcmp(phone,"+353868249677"))&&(!strcmp(message,"Location")))
+     else if((!strcmp(phone,"+086#######"))&&(!strcmp(message,"Location")))
      {
         if(lat > 0)
         {
@@ -197,7 +198,7 @@ void Message()
      //Search for 48months phone number and upload message to database saying credit is low
      //2 numbers specified here are for testing purposes
      //1745 is the number that will be specified
-      else if((!strcmp(phone,"+353868249677")) || (!strcmp(phone,"+353863788777")))//(1745)48months
+      else if((!strcmp(phone,"086#######")) || (!strcmp(phone,"086#######")))//(1745)48months
       {
         //Connect to the server
          if (client.connect(server, 80))
@@ -638,13 +639,3 @@ void loop() {
     } while ((buttonStateA == ACTIVATED) || (AcX < 5000));
 }
 }
-
-
-
-
-
-
-
-
-
-
